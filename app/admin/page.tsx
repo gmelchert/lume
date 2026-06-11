@@ -41,13 +41,13 @@ export default async function AdminPage({
           <li className="p-6 text-center text-sm text-muted">Nenhum produto cadastrado.</li>
         )}
         {all.map((p) => (
-          <li key={p.id} className="flex items-center gap-4 p-4">
+          <li key={p.id} className="flex flex-wrap items-center gap-x-4 gap-y-2 p-4">
             <div className="relative h-16 w-14 shrink-0">
               <Image src={p.imageUrl} alt={p.title} fill className="object-cover" sizes="56px" />
             </div>
             <div className="min-w-0 flex-1">
               <p className="truncate font-medium">{p.title}</p>
-              <p className="text-xs uppercase tracking-widest text-muted">
+              <p className="truncate text-xs uppercase tracking-widest text-muted">
                 {CATEGORY_LABEL[p.category]} · {p.material} · ordem {p.sortOrder}
               </p>
             </div>

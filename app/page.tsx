@@ -21,7 +21,7 @@ export default async function Home() {
       </header>
 
       <section className="bg-cream-dark">
-        <div className="mx-auto max-w-6xl px-6 py-24 text-center">
+        <div className="mx-auto max-w-6xl px-6 py-16 text-center sm:py-24">
           <p className="text-sm uppercase tracking-[0.3em] text-brown">O símbolo</p>
           <h1 className="mt-4 font-serif text-brown-dark">
             <span className="block text-5xl sm:text-7xl">PERFEITO</span>
