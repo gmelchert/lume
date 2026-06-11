@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm install *)",
+      "PowerShell(npm run *)",
+      "PowerShell(npm audit *)",
+      "PowerShell(docker run *)",
+      "PowerShell(docker rm *)"
+    ]
+  }
+}

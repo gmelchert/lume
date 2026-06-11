@@ -1,0 +1,9 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_WHATSAPP_NUMBER: ${NEXT_PUBLIC_WHATSAPP_NUMBER}
+    env_file: .env.local
+    ports:
+      - "3000:3000"
