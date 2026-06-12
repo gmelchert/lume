@@ -14,7 +14,7 @@ export function Catalog({ products }: { products: Product[] }) {
   const visible = products.filter((p) => p.category === tab);
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-14 sm:py-20">
+    <section id="produtos" className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
       <div className="flex justify-center gap-8 sm:gap-12">
         {TABS.map((t) => (
           <button

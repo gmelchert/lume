@@ -1,3 +1,5 @@
+import { WHATSAPP_NUMBER } from "@/constants";
+
 export function whatsappUrl(message: string) {
-  return `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
