@@ -12,8 +12,8 @@ const cormorant = Cormorant_Garamond({
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Lume — Anéis e Pulseiras",
-  description: "Anéis e pulseiras com acabamento premium e design sofisticado.",
+  title: "Lume — Anéis & Jóias",
+  description: "Anéis e jóias com acabamento premium e design sofisticado.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const testimonials = [
   {
@@ -25,7 +25,7 @@ const testimonials = [
 
 function Stars({ amount }: { amount: number }) {
   return (
-    <div className="flex justify-center gap-1 text-brown">
+    <div className="flex justify-center gap-1 text-cream">
       {Array.from({ length: amount }).map((_, i) => (
         <svg key={i} viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4">
           <path d="m12 2 3 6.5 7 .8-5.2 4.8 1.5 6.9L12 17.6 5.2 21l1.5-6.9L1.5 9.3l7-.8L12 2Z" />
@@ -37,6 +37,7 @@ function Stars({ amount }: { amount: number }) {
 
 export function Testimonials() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
   const [active, setActive] = useState(0);
 
   const scrollTo = (index: number) => {
@@ -54,17 +55,36 @@ export function Testimonials() {
     setActive(Math.round(track.scrollLeft / cardWidth));
   };
 
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => {
+      const track = trackRef.current;
+      if (!track || pausedRef.current) return;
+      const cardWidth = (track.children[0] as HTMLElement).offsetWidth;
+      const current = Math.round(track.scrollLeft / cardWidth);
+      scrollTo((current + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
-    <section className="bg-cream">
+    <section
+      className="relative bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/lume-avaliacao.png')" }}
+    >
       <div className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
         <div className="text-center">
-          <p className="text-sm uppercase tracking-[0.3em] text-brown">Quem compra,</p>
-          <h2 className="mt-3 font-serif text-4xl tracking-[0.15em] text-brown-dark sm:text-5xl">
+          <p className="text-sm uppercase tracking-[0.3em] text-cream/80">Quem compra,</p>
+          <h2 className="mt-3 font-serif text-4xl tracking-[0.15em] text-cream sm:text-5xl">
             Recomenda
           </h2>
         </div>
 
-        <div className="relative mt-12">
+        <div
+          className="relative mt-12"
+          onMouseEnter={() => (pausedRef.current = true)}
+          onMouseLeave={() => (pausedRef.current = false)}
+        >
           <button
             type="button"
             aria-label="Anterior"
@@ -84,13 +104,13 @@ export function Testimonials() {
             {testimonials.map((t) => (
               <figure
                 key={t.quote}
-                className="shrink-0 basis-full snap-center border border-line bg-cream-dark/30 px-8 py-10 text-center sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
+                className="shrink-0 basis-full snap-center border border-white/15 bg-white/5 px-8 py-10 text-center backdrop-blur-md sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
               >
                 <Stars amount={t.amount} />
-                <blockquote className="mt-5 text-sm italic leading-relaxed text-ink">
+                <blockquote className="mt-5 text-sm italic leading-relaxed text-cream">
                   “{t.quote}”
                 </blockquote>
-                <figcaption className="mt-5 text-sm text-muted">— {t.author}</figcaption>
+                <figcaption className="mt-5 text-sm text-cream/60">— {t.author}</figcaption>
               </figure>
             ))}
           </div>
@@ -114,8 +134,8 @@ export function Testimonials() {
               type="button"
               aria-label={`Ir para depoimento ${i + 1}`}
               onClick={() => scrollTo(i)}
-              className={`h-2.5 w-2.5 rounded-full transition-colors ${
-                active === i ? "bg-brown" : "bg-line"
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                active === i ? "w-6 bg-brown" : "w-2.5 bg-line"
               }`}
             />
           ))}

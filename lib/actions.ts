@@ -30,7 +30,7 @@ export async function logout() {
 
 function productFields(formData: FormData) {
   return {
-    category: formData.get("category") as "ring" | "bracelet",
+    category: formData.get("category") as "ring" | "accessories",
     title: formData.get("title") as string,
     description: formData.get("description") as string,
     material: formData.get("material") as string,

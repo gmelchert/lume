@@ -5,7 +5,21 @@
       "PowerShell(npm run *)",
       "PowerShell(npm audit *)",
       "PowerShell(docker run *)",
-      "PowerShell(docker rm *)"
+      "PowerShell(docker rm *)",
+      "Bash(npm i *)",
+      "Bash(npx tsc *)",
+      "Skill(run)",
+      "Bash(curl -s -o /tmp/home.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /tmp/p1.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/produtos/1)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/produtos/999999)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/produtos/abc)",
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\(require\\('framer-motion/package.json'\\).version\\)\")",
+      "Bash(curl -s -o /tmp/home2.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s -o /tmp/h3.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s -o /tmp/d3.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/produtos/1)",
+      "Bash(node -e \"console.log\\(JSON.stringify\\(require\\('./package.json'\\).scripts,null,2\\)\\)\")"
     ]
   }
 }

@@ -17,7 +17,7 @@ export function ProductForm({ product }: { product?: Product }) {
       <div className="grid gap-3 sm:grid-cols-2">
         <select name="category" defaultValue={product?.category ?? "ring"} className={input}>
           <option value="ring">Anel</option>
-          <option value="bracelet">Pulseira</option>
+          <option value="accessories">Acessório</option>
         </select>
         <input
           name="material"

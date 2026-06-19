@@ -1,6 +1,6 @@
 import { integer, pgEnum, pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
 
-export const categoryEnum = pgEnum("category", ["ring", "bracelet"]);
+export const categoryEnum = pgEnum("category", ["ring", "accessories"]);
 
 export const products = pgTable("products", {
   id: serial("id").primaryKey(),
